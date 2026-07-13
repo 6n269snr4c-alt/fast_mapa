@@ -675,7 +675,134 @@ body {
 .tl-desc { font-size: 15px; color: var(--w70); line-height: 1.7; }
 .tl-desc strong { color: var(--w90); font-weight: 600; }
 
-/* ══ 06 PRÓXIMOS PASSOS ══════════════════════ */
+/* ══ 06 CALENDÁRIO ═══════════════════════════ */
+.cal-track {
+  position: relative;
+  padding: 48px 0 32px;
+}
+
+/* linha horizontal de fundo */
+.cal-track::before {
+  content: '';
+  position: absolute;
+  top: 76px;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--line2);
+}
+
+.cal-items {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.cal-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 0 12px;
+}
+
+/* dot na linha */
+.cal-dot {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--card);
+  border: 2px solid var(--line2);
+  flex-shrink: 0;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.cal-dot.start {
+  width: 28px; height: 28px;
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 16px rgba(200,255,0,0.35);
+}
+
+.cal-dot.review {
+  background: var(--gdim);
+  border-color: var(--gbord);
+  width: 20px; height: 20px;
+}
+
+.cal-dot.end {
+  width: 28px; height: 28px;
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 16px rgba(200,255,0,0.35);
+}
+
+.cal-dot.prep {
+  background: var(--card);
+  border-color: var(--w30);
+  border-style: dashed;
+}
+
+.cal-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.cal-date {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.cal-date.g { color: var(--green); }
+
+.cal-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.cal-tag.green {
+  background: var(--gdim);
+  color: var(--green);
+  border: 1px solid var(--gbord);
+}
+
+.cal-tag.neutral {
+  background: rgba(255,255,255,0.06);
+  color: var(--w70);
+  border: 1px solid var(--line2);
+}
+
+.cal-tag.dashed {
+  background: transparent;
+  color: var(--w50);
+  border: 1px dashed var(--w30);
+}
+
+.cal-label {
+  font-size: 13px;
+  color: var(--w70);
+  line-height: 1.5;
+  text-align: center;
+  max-width: 160px;
+}
+
+.cal-label strong { color: var(--w90); font-weight: 600; }
+
+/* ══ 07 PRÓXIMOS PASSOS ══════════════════════ */
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1101,9 +1228,71 @@ body {
   </div>
 </section>
 
+<!-- 06 · LINHA DO TEMPO ════════════════════════ -->
+<section class="sec">
+  <div class="sec-num">06</div>
+  <h2 class="sec-title">Linha do<br><span class="g">Tempo</span></h2>
+
+  <div class="cal-track">
+    <div class="cal-items">
+
+      <!-- PRÉ-START -->
+      <div class="cal-item">
+        <div class="cal-dot prep"></div>
+        <div class="cal-content">
+          <div class="cal-date">2ª Quinzena<br>de Julho</div>
+          <span class="cal-tag dashed">Preparação</span>
+          <p class="cal-label"><strong>Alinhamentos financeiros e operacionais</strong> entre o time Fast e o time Mapa</p>
+        </div>
+      </div>
+
+      <!-- START -->
+      <div class="cal-item">
+        <div class="cal-dot start"></div>
+        <div class="cal-content">
+          <div class="cal-date g">01 / 08<br>2026</div>
+          <span class="cal-tag green">Start</span>
+          <p class="cal-label"><strong>Início da operação conjunta.</strong> Mês 1 — Imersão</p>
+        </div>
+      </div>
+
+      <!-- REVISÃO 1 -->
+      <div class="cal-item">
+        <div class="cal-dot review"></div>
+        <div class="cal-content">
+          <div class="cal-date">01 / 09<br>2026</div>
+          <span class="cal-tag neutral">Revisão Mensal</span>
+          <p class="cal-label">DRE do Mês 1 apresentado. Avaliação conjunta do andamento. Início do Mês 2</p>
+        </div>
+      </div>
+
+      <!-- REVISÃO 2 -->
+      <div class="cal-item">
+        <div class="cal-dot review"></div>
+        <div class="cal-content">
+          <div class="cal-date">01 / 10<br>2026</div>
+          <span class="cal-tag neutral">Revisão Mensal</span>
+          <p class="cal-label">DRE do Mês 2 apresentado. Avaliação conjunta do andamento. Início do Mês 3</p>
+        </div>
+      </div>
+
+      <!-- CONCLUSÃO -->
+      <div class="cal-item">
+        <div class="cal-dot end"></div>
+        <div class="cal-content">
+          <div class="cal-date g">31 / 10<br>2026</div>
+          <span class="cal-tag green">Conclusão</span>
+          <p class="cal-label">DRE final. <strong>Definição conjunta dos próximos passos</strong> com base nos 3 meses de operação real</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- 06 · PRÓXIMOS PASSOS ════════════════════════ -->
 <section class="sec dark">
-  <div class="sec-num">06</div>
+  <div class="sec-num">07</div>
   <h2 class="sec-title">Próximos<br><span class="g">Passos</span></h2>
 
   <div class="steps">
